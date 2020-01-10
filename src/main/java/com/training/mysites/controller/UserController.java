@@ -28,7 +28,7 @@ import java.util.logging.Logger;
  * Spring MVC Controller;
  * 1.查询所有符合条件的用户信息，并分页传送给界面
  * 2.编辑方法从数据库中查询需要的数据
- * 3.存储方法吧新增的用户或编辑后的用户信息存储到数据库
+ * 3.存储方法把新增的用户或编辑后的用户信息存储到数据库
  * 4.删除用户
  * 5.锁定用户，有效状态
  */
@@ -111,7 +111,7 @@ public class UserController {
     public String validuser(@PathVariable("uid")Integer uid) {
         User user = userService.findById(uid);
 //        if(user.getValistate() == 0) user.setValistate(1);  //当无效时用户状态为有效
-//        else user.setValistate(0);                          //有效是设置为无效
+//        else user.setValistate(0);                          //有效时设置为无效
         user.setValistate(1-user.getValistate());
         return "redirect:/listusers";
     }

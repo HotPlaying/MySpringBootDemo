@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -42,7 +43,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid UserLogin user, BindingResult result, HttpSession session, Model model) {
+    public String login(@Valid UserLogin user, BindingResult result, HttpSession session, RedirectAttributes attr) {
         if (result.hasErrors()) {
             return "redirect:/login";
         }
@@ -52,7 +53,13 @@ public class LoginController {
             session.setAttribute("user", u);
             return "index";//管理主界面
         }
-        model.addAttribute("fail", "账号或密码不正确");
+        attr.addFlashAttribute("fail", "账号或密码不正确");
+        return "redirect:/login";
+    }
+    @GetMapping("/exit")
+    public String exit(HttpSession session) {  //退出登录
+        User u = null;
+        session.setAttribute("user", u);
         return "redirect:/login";
     }
 }

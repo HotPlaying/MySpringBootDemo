@@ -13,7 +13,9 @@
     <div class="row">
         <h5>登录</h5>
     </div>
-
+    <div class="row" th:if="${fail}">
+        <h5 class="alert alert-danger" th:text="${fail}"></h5>
+    </div>
     <form class="form-row" th:action="@{/login}" th:object="${userLogin}" method="post">
         <div class="row" th:if="${#fields}">
             <p class="alert alert-danger" th:if="${#fields.hasErrors('*')}">

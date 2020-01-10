@@ -44,7 +44,7 @@
                     <input type="hidden" id="svalue" name="svalue" th:value="${s.svalue}">
                     <img th:src="${s.svalue}" id="'svalue_show_'+${s.sid" alt="">
                     <a href="javascript:void(0)" class="btn btn-primary" id="'upimage_'+${s.sid">浏览..</a>
-                    <script type="text/javascript" th:id="svalue_'+${s.sid}">
+                    <script type="text/javascript" th:id="'svalue_' + ${s.sid}">
                         var sid = /*[[${'svalue_editor'+s.sid}]]*/null;
                         var ssid = /*[[${'svalue_'+s.sid}]]*/null;
                         var isid = /*[[${'svalue_show'+s.sid}]]*/null;
